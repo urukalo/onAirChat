@@ -31,13 +31,14 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: eu-central-1  # Specify your AWS region directly here or keep using secrets
+          role-duration-seconds: 1200
           
       - name: Deploy to S3
         run: |
           aws s3 sync build/ s3://onairchat.urukalo.com --delete
           
-      - name: Invalidate CloudFront cache (if using CloudFront)
+      - name: Invalidate CloudFront cache
         if: false  # Set to true if you're using CloudFront
         run: |
           aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
