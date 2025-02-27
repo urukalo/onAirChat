@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Send, Calendar, Bell, User, Search } from 'lucide-react';
 
 const OnAirChat = () => {
+  // eslint-disable-next-line
   const [events, setEvents] = useState([
     { id: 1, name: 'Champions League: Barcelona vs. Munich', category: 'Sports', time: '20:45', date: 'Today', active: true },
     { id: 2, name: 'Taylor Swift Concert: Paris', category: 'Music', time: '21:00', date: 'Today', active: true },
